@@ -1,0 +1,29 @@
+General-Lore:
+  - ""
+  - "<gray>Currently, only the members who has"
+  - "<gray>higher role than <role> can do this."
+  - ""
+  - "<gray><underlined>Right-Click to downgrade this permission."
+  - "<gray><underlined>Left-Click to upgrade this permission."
+
+Permissions:
+  break:
+    displayName: "<yellow>Break Blocks"
+    lore:
+      - ""
+      - "<gray>A permission that allows players to break blocks."
+  place:
+    displayName: "<yellow>Place Blocks"
+    lore:
+      - ""
+      - "<gray>A permission that allows players to place blocks."
+  invite:
+    displayName: "<yellow>Invite Players"
+    lore:
+      - ""
+      - "<gray>A permission that allows people to invite someone."
+  fly:
+    displayName: "<yellow>Fly"
+    lore:
+      - ""
+      - "<gray>A permission that allows people to fly in your island."

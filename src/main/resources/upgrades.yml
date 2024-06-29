@@ -1,0 +1,19 @@
+Upgrades:
+
+  members:
+    0:
+      level: 0
+      value: 5
+      price: 500
+
+  size:
+    0:
+      level: 0
+      value: 50
+      price: 500
+
+  crop:
+    0:
+      level: 0
+      value: 2
+      price: 500

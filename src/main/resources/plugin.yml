@@ -1,0 +1,11 @@
+name: OdinSkyBlock
+version: '${version}'
+main: com.thoxia.odin.skyblock.SkyBlockPlugin
+api-version: 1.19
+softdepend: [ SlimeWorldManager, PlaceholderAPI, Vault, PlayerPoints, WorldEdit, Multiverse-Core ]
+authors: [ Thoxia, hyperion ]
+description: An SkyBlock plugin created by Thoxia, with love.
+website: https://odin.thoxia.com/skyblock
+libraries:
+  - "org.mariadb.jdbc:mariadb-java-client:3.1.0"
+  - "com.zaxxer:HikariCP:5.0.1"
