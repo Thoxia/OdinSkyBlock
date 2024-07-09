@@ -3,6 +3,7 @@ package com.thoxia.odin.skyblock.schematic;
 import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.schematic.ISchematicManager;
 import com.thoxia.odin.skyblock.api.schematic.paster.SchematicPaster;
+import com.thoxia.odin.skyblock.schematic.paster.SchematicPasterFactory;
 import com.thoxia.odin.skyblock.schematic.paster.impl.WorldEditPaster;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,8 @@ public class SchematicManager implements ISchematicManager {
 
     private final Map<String, Schematic> schematicMap = new HashMap<>();
     private final SkyBlockPlugin plugin;
+
+    private final SchematicPasterFactory schematicPasterFactory = new SchematicPasterFactory();
 
     @Getter @Setter
     private SchematicPaster paster;
@@ -45,8 +48,7 @@ public class SchematicManager implements ISchematicManager {
             this.schematicMap.put(key, schematic);
         }
 
-        if (Bukkit.getPluginManager().getPlugin("WorldEdit") != null)
-            paster = new WorldEditPaster();
+            paster = schematicPasterFactory.getSchematicPaster();
     }
 
     public Schematic getSchematic(String name) {

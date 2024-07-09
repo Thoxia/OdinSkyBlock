@@ -10,6 +10,8 @@ import java.util.List;
 
 public enum Config {
 
+    SCHEMATIC_PASTER("Setup.schematic-paster", "WorldEdit"),
+
     MAX_NAME_LENGTH("Settings.max-island-name-length", 16),
     COLORIZE_NAME("Settings.colorize-island-name", true),
 
