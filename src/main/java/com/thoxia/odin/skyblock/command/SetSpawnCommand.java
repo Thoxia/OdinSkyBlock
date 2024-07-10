@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
 
 @RequiredArgsConstructor
-@Command(value = "skyblock", alias = "cskyblock")
+@Command(value = "skyblock", alias = "odinskyblock")
 public class SetSpawnCommand extends BaseCommand {
 
     private final SkyBlockPlugin plugin;
