@@ -32,7 +32,7 @@ public class CreateCommand extends BaseCommand {
             return;
         }
 
-        if (sPlayer.getIslandCreation() >= PermissionUtils.getMax(player, "crius.skyblock.creation.limit", 3)) {
+        if (sPlayer.getIslandCreation() >= PermissionUtils.getMax(player, "thoxia.skyblock.creation.limit", 3)) {
             player.sendMessage(ChatUtils.format("<red>You have reached to the island creation limit."));
             return;
         }

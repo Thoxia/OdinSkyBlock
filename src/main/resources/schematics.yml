@@ -4,7 +4,7 @@ Schematics:
     description:
       - "<gray>The usual SkyBlock experience."
     # You must have at least one schematic that does not require any permission.
-    # permission: "crius.skyblock.schematic.default"
+    # permission: "thoxia.skyblock.schematic.default"
     icon: "GRASS_BLOCK"
     files:
       normal: "default_normal.schem"

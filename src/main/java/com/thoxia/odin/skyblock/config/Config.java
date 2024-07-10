@@ -46,11 +46,11 @@ public enum Config {
         }
 
         SkyBlockPlugin.getInstance().getConfig().options().setHeader(Arrays.asList(
-                "CriusSkyBlock Configuration File",
+                "OdinSkyBlock Configuration File",
                 "",
                 "Developers: Thoxia, hyperion",
                 "If you need help configuring the plugin, you can join our discord server.",
-                "https://discord.gg/hSn9Nr84CB"
+                "https://discord.gg/9vcAHQnZsg"
         ));
         SkyBlockPlugin.getInstance().getConfig().save();
     }

@@ -29,7 +29,7 @@ public class ConnectionListener implements Listener {
 
             Bukkit.getScheduler().runTask(plugin, () -> {
                 FastBoard board = new FastBoard(player);
-                board.updateTitle("Crius SkyBlock");
+                board.updateTitle("OdinSkyBlock");
                 plugin.getBoardMap().put(player.getUniqueId(), board);
 
                 Island island = plugin.getIslandManager().getIsland(player.getLocation());
