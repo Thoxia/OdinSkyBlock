@@ -45,6 +45,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.SimpleCommandMap;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.CompactNumberFormat;
@@ -153,6 +154,12 @@ public final class SkyBlockPlugin extends SkyBlock {
         new ScoreboardTask(this).runTaskTimerAsynchronously(this, 10, 10);
 
         EventBus.setCallEvents(true);
+
+        if (!new File(new File(this.getDataFolder(), "schematics"), "default_normal.schem").exists()) {
+            saveResource("schematics/default_normal.schem", false);
+            saveResource("schematics/default_nether.schem", false);
+            saveResource("schematics/default_the_end.schem", false);
+        }
 
     }
 
