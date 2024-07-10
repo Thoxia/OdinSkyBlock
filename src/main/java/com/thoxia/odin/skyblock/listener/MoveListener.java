@@ -1,6 +1,7 @@
 package com.thoxia.odin.skyblock.listener;
 
 import com.thoxia.odin.skyblock.SkyBlockPlugin;
+import com.thoxia.odin.skyblock.api.Constants;
 import com.thoxia.odin.skyblock.api.island.Island;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
 import com.thoxia.odin.skyblock.api.util.ChatUtils;
@@ -20,9 +21,7 @@ public class MoveListener implements Listener {
 
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
-        if (event.getFrom().getBlockX() == event.getTo().getBlockX()
-                && event.getFrom().getBlockY() == event.getTo().getBlockY()
-                && event.getFrom().getBlockZ() == event.getTo().getBlockZ())
+        if (!event.hasChangedBlock())
             return;
 
         Player player = event.getPlayer();
@@ -59,7 +58,8 @@ public class MoveListener implements Listener {
             if (to.getDescription() != null)
                 player.sendTitlePart(TitlePart.SUBTITLE, to.getDescription());
 
-            if (player.isFlying() && !to.hasPermission(sPlayer, plugin.getPermissionManager().getPermission("fly"))) {
+            if (player.isFlying() && !to.hasPermission(sPlayer, plugin.getPermissionManager().getPermission("fly"))
+                    && !player.hasPermission(Constants.FLY_BYPASS_PERMISSION)) {
                 player.setFlying(false);
                 player.setAllowFlight(false);
                 player.sendMessage(ChatUtils.format("<red>You do not have permission to fly in this island."));

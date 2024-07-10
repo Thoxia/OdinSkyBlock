@@ -1,6 +1,7 @@
 package com.thoxia.odin.skyblock.command;
 
 import com.thoxia.odin.skyblock.SkyBlockPlugin;
+import com.thoxia.odin.skyblock.api.Constants;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
 import com.thoxia.odin.skyblock.api.role.IslandRole;
 import com.thoxia.odin.skyblock.api.util.ChatUtils;
@@ -10,7 +11,6 @@ import dev.triumphteam.cmd.core.BaseCommand;
 import dev.triumphteam.cmd.core.annotation.Command;
 import dev.triumphteam.cmd.core.annotation.SubCommand;
 import lombok.RequiredArgsConstructor;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 @Command(value = "island", alias = {"is"})
@@ -32,7 +32,7 @@ public class CreateCommand extends BaseCommand {
             return;
         }
 
-        if (sPlayer.getIslandCreation() >= PermissionUtils.getMax(player, "thoxia.skyblock.creation.limit", 3)) {
+        if (sPlayer.getIslandCreation() >= PermissionUtils.getMax(player, Constants.CREATE_LIMIT_PERMISSION, 3)) {
             player.sendMessage(ChatUtils.format("<red>You have reached to the island creation limit."));
             return;
         }
@@ -47,7 +47,7 @@ public class CreateCommand extends BaseCommand {
         Island island = new Island(sPlayer);
         plugin.getIslandManager().createIsland(island).whenComplete((bool, ex) -> {
             plugin.debug("island created. teleporting player...");
-            player.teleportAsync(island.getLocation(World.Environment.NORMAL));
+            plugin.getIslandManager().teleportToIsland(player, island.getUniqueId());
         });
 
         sPlayer.setIslandCreation(sPlayer.getIslandCreation() + 1);
