@@ -14,6 +14,7 @@ import com.thoxia.odin.skyblock.api.player.PlayerManager;
 import com.thoxia.odin.skyblock.api.schematic.ISchematicManager;
 import com.thoxia.odin.skyblock.api.server.IServerManager;
 import com.thoxia.odin.skyblock.api.upgrade.IUpgradeManager;
+import com.thoxia.odin.skyblock.api.util.ChatUtils;
 import com.thoxia.odin.skyblock.api.world.WorldManager;
 import com.thoxia.odin.skyblock.command.*;
 import com.thoxia.odin.skyblock.config.Config;
@@ -33,7 +34,7 @@ import com.thoxia.odin.skyblock.world.impl.DefaultWorldManager;
 import dev.triumphteam.cmd.bukkit.BukkitCommandManager;
 import dev.triumphteam.cmd.core.exceptions.CommandRegistrationException;
 import dev.triumphteam.cmd.core.suggestion.SuggestionKey;
-import fr.mrmicky.fastboard.FastBoard;
+import fr.mrmicky.fastboard.adventure.FastBoard;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -46,10 +47,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.text.CompactNumberFormat;
+import java.text.NumberFormat;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -72,7 +72,7 @@ public final class SkyBlockPlugin extends SkyBlock {
     private final Set<String> playerCache = ConcurrentHashMap.newKeySet();
     private final Map<UUID, FastBoard> boardMap = new ConcurrentHashMap<>();
 
-    @Setter private Database database = new YamlDatabase(this);
+    @Setter private Database database;
 
     // Managers
     @Setter private WorldManager worldManager = new DefaultWorldManager(this);
@@ -124,11 +124,21 @@ public final class SkyBlockPlugin extends SkyBlock {
         schematicsFile.create();
         upgradesFile.create();
 
+        // initialize number formatting
+        ChatUtils.setCompactNumberFormat(
+                CompactNumberFormat.getCompactNumberInstance(
+                        Locale.forLanguageTag(Messages.NUMBER_FORMATTING_LOCALE.getAsString()),
+                        NumberFormat.Style.valueOf(Messages.NUMBER_FORMATTING_STYLE.getAsString())
+                )
+        );
+
         worldManager.loadWorlds();
 
         upgradeManager.onEnable();
         schematicManager.onEnable();
         permissionManager.onEnable();
+
+        database = new YamlDatabase(this);
 
         this.getModuleManager().enableModules();
 
