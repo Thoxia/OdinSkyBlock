@@ -12,6 +12,22 @@ import java.util.List;
 public enum Messages {
 
     ACTION_CANCELLED("Messages.action-cancelled", "<red>You do not have the permission to do this."),
+
+    NUMBER_FORMATTING_LOCALE("NumberFormat.locale", "en-US", "Full list of locales can be found at https://www.oracle.com/java/technologies/javase/jdk8-jre8-suported-locales.html"),
+    NUMBER_FORMATTING_STYLE("NumberFormat.style", "SHORT"),
+
+    BOARD_TITLE("Board.title", "<#00ffff>OdinSkyBlock"),
+    BOARD_LINES(
+            "Board.lines",
+            Arrays.asList(
+                    "",
+                    "<#cfe2f3>Island owner: <#00ffff><current-island-owner>",
+                    "<#cfe2f3>Island size: <#00ffff><current-island-size>",
+                    "<#cfe2f3>Island level: <#00ffff><current-island-level>",
+                    ""
+            ),
+            "You can use PlaceholderAPI placeholders as well!"
+    ),
     ;
 
     private final String path;

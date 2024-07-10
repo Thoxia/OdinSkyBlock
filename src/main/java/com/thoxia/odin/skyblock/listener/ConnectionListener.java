@@ -4,7 +4,7 @@ import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.island.Island;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
 import com.thoxia.odin.skyblock.util.WorldBorderUtils;
-import fr.mrmicky.fastboard.FastBoard;
+import fr.mrmicky.fastboard.adventure.FastBoard;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -29,7 +29,6 @@ public class ConnectionListener implements Listener {
 
             Bukkit.getScheduler().runTask(plugin, () -> {
                 FastBoard board = new FastBoard(player);
-                board.updateTitle("OdinSkyBlock");
                 plugin.getBoardMap().put(player.getUniqueId(), board);
 
                 Island island = plugin.getIslandManager().getIsland(player.getLocation());
