@@ -1,5 +1,5 @@
 # What is OdinSkyBlock?
-OdinSkyBlock is a free-to-use, open-sourced SkyBlock plugin.<br>
+OdinSkyBlock is a open-sourced SkyBlock plugin.<br>
 Okay, cool, but what does it offer? Why should I use OdinSkyBlock?<br>
 OdinSkyBlock was actually made for Cross-Server (or Multi-Server, whatever you call it) use.<br>
 With use of our amazing Multi-Server module, everything will be synced between servers.<br>
