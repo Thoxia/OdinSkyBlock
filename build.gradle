@@ -27,7 +27,7 @@ allprojects {
         compileOnly 'org.projectlombok:lombok:1.18.30'
         annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
-        compileOnly 'io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT'
+        compileOnly 'io.papermc.paper:paper-api:1.19-R0.1-SNAPSHOT'
     }
 
     build {
@@ -58,7 +58,7 @@ dependencies {
     implementation project(':api')
 
     implementation ("dev.triumphteam:triumph-cmd-bukkit:2.0.0-SNAPSHOT") { exclude group: "com.google.code.gson" }
-    implementation "xyz.xenondevs.invui:invui:1.32"
+    implementation "xyz.xenondevs.invui:invui:1.33"
 
     compileOnly 'com.sk89q.worldedit:worldedit-bukkit:7.2.13'
 

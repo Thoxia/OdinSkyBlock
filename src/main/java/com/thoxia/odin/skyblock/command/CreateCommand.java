@@ -27,6 +27,11 @@ public class CreateCommand extends BaseCommand {
             return;
         }
 
+        if (plugin.getIslandManager().getSpawnLocation() == null) {
+            player.sendMessage(ChatUtils.format("<red>Spawn location is not set! A server admin must set the spawn location first."));
+            return;
+        }
+
         if (sPlayer.getIslandId() != null) {
             player.sendMessage(ChatUtils.format("<red>You already have an island!"));
             return;
