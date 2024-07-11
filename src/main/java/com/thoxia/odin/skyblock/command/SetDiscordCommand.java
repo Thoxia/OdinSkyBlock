@@ -9,7 +9,6 @@ import dev.triumphteam.cmd.core.BaseCommand;
 import dev.triumphteam.cmd.core.annotation.Command;
 import dev.triumphteam.cmd.core.annotation.SubCommand;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
@@ -40,11 +39,6 @@ public class SetDiscordCommand extends BaseCommand {
 
         if (sPlayer.getIsland() == null) {
             player.sendMessage(ChatUtils.format("<red>Inorder to change your island discord, you need to be on your island."));
-            return;
-        }
-
-        if (StringUtils.isEmpty(discord)) {
-            player.sendMessage(ChatUtils.format("<red>Invalid discord."));
             return;
         }
 

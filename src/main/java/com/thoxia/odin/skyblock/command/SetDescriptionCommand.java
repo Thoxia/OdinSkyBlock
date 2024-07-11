@@ -12,7 +12,6 @@ import dev.triumphteam.cmd.core.annotation.SubCommand;
 import lombok.RequiredArgsConstructor;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import org.apache.commons.lang3.StringUtils;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
@@ -25,7 +24,7 @@ public class SetDescriptionCommand extends BaseCommand {
 
     @SubCommand("setdescription")
     @Permission("skyblock.island.setdescription")
-    public void setNameCommand(Player player, @Join(" ") String description) {
+    public void setNameCommand(Player player, @Join() String description) {
         SPlayer sPlayer = plugin.getPlayerManager().getPlayer(player);
         if (sPlayer == null) {
             player.sendMessage(ChatUtils.format("<red>Your data is still loading, please try again."));
@@ -40,11 +39,6 @@ public class SetDescriptionCommand extends BaseCommand {
 
         if (sPlayer.getIsland() == null) {
             player.sendMessage(ChatUtils.format("<red>Inorder to change your island description, you need to be on your island."));
-            return;
-        }
-
-        if (StringUtils.isEmpty(description)) {
-            player.sendMessage(ChatUtils.format("<red>Invalid description."));
             return;
         }
 
