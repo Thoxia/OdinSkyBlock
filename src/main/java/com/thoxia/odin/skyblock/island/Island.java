@@ -20,7 +20,6 @@ import org.bukkit.World;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 public class Island implements com.thoxia.odin.skyblock.api.island.Island {
@@ -53,8 +52,8 @@ public class Island implements com.thoxia.odin.skyblock.api.island.Island {
 
     @Getter private final IslandBank islandBank = new IslandBank(this);
 
-    @Getter @Setter private BigDecimal worth = BigDecimal.ZERO;
-    @Getter @Setter private BigDecimal level = BigDecimal.ZERO;
+    @Getter @Setter private long worth = 0;
+    @Getter @Setter private long level = 0;
 
     private final Map<Upgrade.Type, Upgrade> upgrades = new HashMap<>();
 

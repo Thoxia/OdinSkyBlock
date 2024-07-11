@@ -118,8 +118,8 @@ public class YamlDatabase implements Database {
         island.setDiscord(discord);
         island.setBiome(biome);
         island.setLocked(locked);
-        island.setLevel(BigDecimal.valueOf(level));
-        island.setWorth(BigDecimal.valueOf(worth));
+        island.setLevel(level);
+        island.setWorth(worth);
 
         // members
         if (data.isSet("Members")) {
@@ -285,8 +285,8 @@ public class YamlDatabase implements Database {
         data.set("discord", island.getDiscord());
         data.set("biome", island.getBiome().name());
         data.set("locked", island.isLocked());
-        data.set("level", island.getLevel().longValue());
-        data.set("worth", island.getWorth().longValue());
+        data.set("level", island.getLevel());
+        data.set("worth", island.getWorth());
 
         // members
         for (SPlayer member : island.getIslandMembers()) {

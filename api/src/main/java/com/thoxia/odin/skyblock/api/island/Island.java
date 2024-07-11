@@ -11,7 +11,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
 
-import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -54,13 +53,13 @@ public interface Island {
 
     IslandBank getIslandBank();
 
-    BigDecimal getWorth();
+    long getWorth();
 
-    void setWorth(BigDecimal decimal);
+    void setWorth(long decimal);
 
-    BigDecimal getLevel();
+    long getLevel();
 
-    void setLevel(BigDecimal decimal);
+    void setLevel(long decimal);
 
     Upgrade getUpgrade(Upgrade.Type type);
 
