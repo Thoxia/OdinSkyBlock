@@ -8,6 +8,8 @@ import com.thoxia.odin.skyblock.api.island.chat.IChatManager;
 import com.thoxia.odin.skyblock.api.module.ModuleManager;
 import com.thoxia.odin.skyblock.api.permission.IPermissionManager;
 import com.thoxia.odin.skyblock.api.player.PlayerManager;
+import com.thoxia.odin.skyblock.api.role.IIslandRole;
+import com.thoxia.odin.skyblock.api.role.IIslandRoleManager;
 import com.thoxia.odin.skyblock.api.schematic.ISchematicManager;
 import com.thoxia.odin.skyblock.api.server.IServerManager;
 import com.thoxia.odin.skyblock.api.upgrade.IUpgradeManager;
@@ -34,6 +36,8 @@ public abstract class SkyBlock extends JavaPlugin {
     public abstract PlayerManager getPlayerManager();
 
     public abstract IIslandManager getIslandManager();
+
+    public abstract IIslandRoleManager getIslandRoleManager();
 
     public abstract ISchematicManager getSchematicManager();
 

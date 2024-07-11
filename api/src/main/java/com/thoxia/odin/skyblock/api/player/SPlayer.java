@@ -1,7 +1,7 @@
 package com.thoxia.odin.skyblock.api.player;
 
 import com.thoxia.odin.skyblock.api.island.Island;
-import com.thoxia.odin.skyblock.api.role.IslandRole;
+import com.thoxia.odin.skyblock.api.role.IIslandRole;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -31,9 +31,9 @@ public interface SPlayer {
     void setIslandId(UUID id);
 
     @Nullable
-    IslandRole getRole();
+    IIslandRole getRole();
 
-    void setRole(IslandRole role);
+    void setRole(IIslandRole role);
 
     @Nullable
     Island getIsland();
