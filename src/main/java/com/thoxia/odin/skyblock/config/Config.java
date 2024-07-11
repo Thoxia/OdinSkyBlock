@@ -4,7 +4,9 @@ import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.util.ChatUtils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import org.bukkit.configuration.ConfigurationSection;
 
+import java.lang.module.Configuration;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +22,6 @@ public enum Config {
     BLOCKED_WORDS("Settings.blocked-words", Arrays.asList("kys", "fys", "fuck")),
 
     ISLAND_RANGE("Settings.island-range", 400, "How big of a space should an island have?")
-
     ;
 
     private final String path;
@@ -53,6 +54,10 @@ public enum Config {
                 "https://discord.gg/hSn9Nr84CB"
         ));
         SkyBlockPlugin.getInstance().getConfig().save();
+    }
+
+    public ConfigurationSection getAsConfigurationSection() {
+        return SkyBlockPlugin.getInstance().getConfig().getConfigurationSection(this.path);
     }
 
     public String getAsString() {

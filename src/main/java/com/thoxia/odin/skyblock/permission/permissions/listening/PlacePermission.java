@@ -1,7 +1,7 @@
 package com.thoxia.odin.skyblock.permission.permissions.listening;
 
-import com.thoxia.odin.skyblock.api.role.IslandRole;
 import com.thoxia.odin.skyblock.permission.ListeningPermission;
+import com.thoxia.odin.skyblock.role.IslandRole;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockMultiPlaceEvent;
@@ -11,7 +11,7 @@ import org.bukkit.event.hanging.HangingPlaceEvent;
 public class PlacePermission extends ListeningPermission {
 
     public PlacePermission() {
-        super("place", IslandRole.COOP, Material.DIRT);
+        super("place");
     }
 
     @EventHandler

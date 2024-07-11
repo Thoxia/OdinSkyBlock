@@ -5,11 +5,12 @@ import com.thoxia.odin.skyblock.api.event.*;
 import com.thoxia.odin.skyblock.api.island.bank.IslandBank;
 import com.thoxia.odin.skyblock.api.permission.IslandPermission;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
-import com.thoxia.odin.skyblock.api.role.IslandRole;
+import com.thoxia.odin.skyblock.api.role.IIslandRole;
 import com.thoxia.odin.skyblock.api.schematic.ISchematic;
 import com.thoxia.odin.skyblock.api.upgrade.Upgrade;
 import com.thoxia.odin.skyblock.eventbus.EventBus;
 import com.thoxia.odin.skyblock.player.SSPlayer;
+import com.thoxia.odin.skyblock.role.IslandRole;
 import com.thoxia.odin.skyblock.schematic.Schematic;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,7 +29,7 @@ public class Island implements com.thoxia.odin.skyblock.api.island.Island {
     @Getter private final UUID uniqueId;
     @Getter private final long creationTime;
     @Getter private final ISchematic schematic;
-    @Getter private final Map<IslandPermission, IslandRole> permissionMap = new HashMap<>();
+    @Getter private final Map<IslandPermission, IIslandRole> permissionMap = new HashMap<>();
     @Getter private final Set<SPlayer> islandMembers = new HashSet<>();
     @Getter private final Set<SPlayer> bannedMembers = new HashSet<>();
     @Getter private final Set<SPlayer> coopPlayers = new HashSet<>();
@@ -200,8 +201,9 @@ public class Island implements com.thoxia.odin.skyblock.api.island.Island {
     public boolean hasPermission(SPlayer player, IslandPermission permission) {
         if (player == null) return false;
 
-        IslandRole role = this.uniqueId.equals(player.getIslandId()) ? player.getRole() : this.coopPlayers.contains(player) ? IslandRole.COOP : IslandRole.VISITOR;
-        IslandRole minRole = this.permissionMap.getOrDefault(permission, permission.getDefaultRole());
+        IIslandRole role = this.uniqueId.equals(player.getIslandId()) ? player.getRole() :
+                this.coopPlayers.contains(player) ? IslandRole.coopRole() : IslandRole.visitorRole();
+        IIslandRole minRole = this.permissionMap.getOrDefault(permission, permission.getDefaultRole());
 
         return role.getWeight() >= minRole.getWeight();
     }
@@ -212,5 +214,4 @@ public class Island implements com.thoxia.odin.skyblock.api.island.Island {
 
         return hasPermission(sPlayer, permission);
     }
-
 }
