@@ -3,7 +3,7 @@ package com.thoxia.odin.skyblock.api.island;
 import com.thoxia.odin.skyblock.api.island.bank.IslandBank;
 import com.thoxia.odin.skyblock.api.permission.IslandPermission;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
-import com.thoxia.odin.skyblock.api.role.IslandRole;
+import com.thoxia.odin.skyblock.api.role.IIslandRole;
 import com.thoxia.odin.skyblock.api.schematic.ISchematic;
 import com.thoxia.odin.skyblock.api.upgrade.Upgrade;
 import net.kyori.adventure.text.Component;
@@ -23,7 +23,7 @@ public interface Island {
 
     ISchematic getSchematic();
 
-    Map<IslandPermission, IslandRole> getPermissionMap();
+    Map<IslandPermission, IIslandRole> getPermissionMap();
 
     Set<SPlayer> getIslandMembers();
 
@@ -97,13 +97,6 @@ public interface Island {
 
     Map<UUID, Integer> getRatings();
 
-    default boolean hasPermission(SPlayer player, IslandPermission permission) {
-        if (player == null) return false;
-
-        IslandRole role = this.getUniqueId().equals(player.getIslandId()) ? player.getRole() : this.getCoopPlayers().contains(player) ? IslandRole.COOP : IslandRole.VISITOR;
-        IslandRole minRole = this.getPermissionMap().getOrDefault(permission, permission.getDefaultRole());
-
-        return role.getWeight() >= minRole.getWeight();
-    }
+    boolean hasPermission(SPlayer player, IslandPermission permission);
 
 }

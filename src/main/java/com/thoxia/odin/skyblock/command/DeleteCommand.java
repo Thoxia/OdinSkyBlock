@@ -2,8 +2,8 @@ package com.thoxia.odin.skyblock.command;
 
 import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
-import com.thoxia.odin.skyblock.api.role.IslandRole;
 import com.thoxia.odin.skyblock.api.util.ChatUtils;
+import com.thoxia.odin.skyblock.role.IslandRole;
 import dev.triumphteam.cmd.bukkit.annotation.Permission;
 import dev.triumphteam.cmd.core.BaseCommand;
 import dev.triumphteam.cmd.core.annotation.Command;
@@ -31,7 +31,7 @@ public class DeleteCommand extends BaseCommand {
             return;
         }
 
-        if (sPlayer.getRole() != IslandRole.OWNER) {
+        if (sPlayer.getRole() != IslandRole.lastRole()) {
             player.sendMessage(ChatUtils.format("<red>You must be the owner of your island to delete."));
             return;
         }

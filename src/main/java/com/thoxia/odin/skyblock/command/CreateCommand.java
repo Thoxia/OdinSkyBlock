@@ -3,10 +3,10 @@ package com.thoxia.odin.skyblock.command;
 import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.Constants;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
-import com.thoxia.odin.skyblock.api.role.IslandRole;
 import com.thoxia.odin.skyblock.api.util.ChatUtils;
 import com.thoxia.odin.skyblock.api.util.PermissionUtils;
 import com.thoxia.odin.skyblock.island.Island;
+import com.thoxia.odin.skyblock.role.IslandRole;
 import dev.triumphteam.cmd.core.BaseCommand;
 import dev.triumphteam.cmd.core.annotation.Command;
 import dev.triumphteam.cmd.core.annotation.SubCommand;
@@ -57,7 +57,7 @@ public class CreateCommand extends BaseCommand {
 
         sPlayer.setIslandCreation(sPlayer.getIslandCreation() + 1);
         sPlayer.setIslandId(island.getUniqueId());
-        sPlayer.setRole(IslandRole.OWNER);
+        sPlayer.setRole(IslandRole.lastRole());
     }
 
 }

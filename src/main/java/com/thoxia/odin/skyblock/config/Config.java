@@ -4,7 +4,9 @@ import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.util.ChatUtils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import org.bukkit.configuration.ConfigurationSection;
 
+import java.lang.module.Configuration;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +24,6 @@ public enum Config {
     FORCE_ENABLE_BORDERS("Settings.force-enable-border", true, "Should we forcefully send border packets to the players even if they disabled border from settings?"),
 
     ISLAND_RANGE("Settings.island-range", 400, "How big of a space should an island have?")
-
     ;
 
     private final String path;
@@ -55,6 +56,10 @@ public enum Config {
                 "https://discord.gg/9vcAHQnZsg"
         ));
         SkyBlockPlugin.getInstance().getConfig().save();
+    }
+
+    public ConfigurationSection getAsConfigurationSection() {
+        return SkyBlockPlugin.getInstance().getConfig().getConfigurationSection(this.path);
     }
 
     public String getAsString() {

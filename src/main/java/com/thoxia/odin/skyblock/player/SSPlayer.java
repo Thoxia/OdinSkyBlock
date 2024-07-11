@@ -4,7 +4,7 @@ import com.google.common.base.Objects;
 import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.island.Island;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
-import com.thoxia.odin.skyblock.api.role.IslandRole;
+import com.thoxia.odin.skyblock.api.role.IIslandRole;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -24,7 +24,7 @@ public class SSPlayer implements SPlayer {
     private boolean borderEnabled = true;
     @Nullable private UUID islandId;
     @Nullable private Island visitingIsland;
-    @Nullable private IslandRole role;
+    @Nullable private IIslandRole role;
 
     @Nullable
     public Island getIsland() {

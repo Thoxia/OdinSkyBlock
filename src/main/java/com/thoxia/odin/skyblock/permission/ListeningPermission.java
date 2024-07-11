@@ -4,7 +4,7 @@ import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.island.Island;
 import com.thoxia.odin.skyblock.api.permission.IslandPermission;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
-import com.thoxia.odin.skyblock.api.role.IslandRole;
+import com.thoxia.odin.skyblock.api.role.IIslandRole;
 import com.thoxia.odin.skyblock.config.Messages;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -14,8 +14,8 @@ import org.bukkit.event.Listener;
 
 public abstract class ListeningPermission extends IslandPermission implements Listener {
 
-    public ListeningPermission(String name, IslandRole defaultRole, Material icon) {
-        super(name, defaultRole, icon);
+    public ListeningPermission(String name) {
+        super(name);
 
         SkyBlockPlugin.getInstance().getServer().getPluginManager().registerEvents(this, SkyBlockPlugin.getInstance());
     }

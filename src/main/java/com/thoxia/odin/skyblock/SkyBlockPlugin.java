@@ -11,6 +11,7 @@ import com.thoxia.odin.skyblock.api.island.chat.IChatManager;
 import com.thoxia.odin.skyblock.api.module.ModuleManager;
 import com.thoxia.odin.skyblock.api.permission.IPermissionManager;
 import com.thoxia.odin.skyblock.api.player.PlayerManager;
+import com.thoxia.odin.skyblock.api.role.IIslandRoleManager;
 import com.thoxia.odin.skyblock.api.schematic.ISchematicManager;
 import com.thoxia.odin.skyblock.api.server.IServerManager;
 import com.thoxia.odin.skyblock.api.upgrade.IUpgradeManager;
@@ -26,6 +27,7 @@ import com.thoxia.odin.skyblock.island.IslandManager;
 import com.thoxia.odin.skyblock.island.chat.ChatManager;
 import com.thoxia.odin.skyblock.listener.*;
 import com.thoxia.odin.skyblock.permission.PermissionManager;
+import com.thoxia.odin.skyblock.role.IslandRoleManager;
 import com.thoxia.odin.skyblock.schematic.SchematicManager;
 import com.thoxia.odin.skyblock.server.ServerManager;
 import com.thoxia.odin.skyblock.task.ScoreboardTask;
@@ -79,11 +81,12 @@ public final class SkyBlockPlugin extends SkyBlock {
     @Setter private WorldManager worldManager = new DefaultWorldManager(this);
     @Setter private IIslandManager islandManager = new IslandManager(this);
     @Setter private IInviteManager inviteManager = new InviteManager(this);
+    @Setter private IIslandRoleManager islandRoleManager = new IslandRoleManager(this);
     @Setter private IServerManager serverManager = new ServerManager();
     @Setter private ModuleManager moduleManager = new ModuleManager(this);
     @Setter private PlayerManager playerManager = new PlayerManager();
     @Setter private IUpgradeManager upgradeManager = new UpgradeManager(this);
-    @Setter private IPermissionManager permissionManager = new PermissionManager();
+    @Setter private IPermissionManager permissionManager = new PermissionManager(this);
     @Setter private ISchematicManager schematicManager = new SchematicManager(this);
     @Setter private IChatManager chatManager = new ChatManager(this);
 
@@ -138,6 +141,7 @@ public final class SkyBlockPlugin extends SkyBlock {
         upgradeManager.onEnable();
         schematicManager.onEnable();
         permissionManager.onEnable();
+        islandRoleManager.onEnable();
 
         database = new YamlDatabase(this);
 

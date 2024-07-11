@@ -5,8 +5,8 @@ import com.google.common.cache.CacheBuilder;
 import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.invite.IInviteManager;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
-import com.thoxia.odin.skyblock.api.role.IslandRole;
 import com.thoxia.odin.skyblock.api.util.ChatUtils;
+import com.thoxia.odin.skyblock.role.IslandRole;
 import lombok.RequiredArgsConstructor;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
@@ -48,7 +48,7 @@ public class InviteManager implements IInviteManager {
 
     @Override
     public void acceptInvite(SPlayer player, UUID islandId) {
-        player.setRole(IslandRole.MEMBER);
+        player.setRole(IslandRole.defaultRole());
         player.setIslandId(islandId);
         plugin.getIslandManager().teleportToIsland(player.getPlayer(), islandId);
     }
