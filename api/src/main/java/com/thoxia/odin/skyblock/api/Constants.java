@@ -6,4 +6,6 @@ public class Constants {
 
     public static final String CREATE_LIMIT_PERMISSION = "thoxia.skyblock.creation.limit";
 
+    public static final String FORCE_BORDER_BYPASS_PERMISSION = "thoxia.skyblock.force.border.bypass";
+
 }

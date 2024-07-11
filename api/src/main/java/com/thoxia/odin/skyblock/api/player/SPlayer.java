@@ -26,6 +26,10 @@ public interface SPlayer {
 
     void setChatEnabled(boolean b);
 
+    boolean isBorderEnabled();
+
+    void setBorderEnabled(boolean b);
+
     @Nullable UUID getIslandId();
 
     void setIslandId(UUID id);

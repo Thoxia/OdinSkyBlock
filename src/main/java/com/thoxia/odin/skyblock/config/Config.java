@@ -19,6 +19,8 @@ public enum Config {
     COLORIZE_DESCRIPTION("Settings.colorize-island-description", true),
     BLOCKED_WORDS("Settings.blocked-words", Arrays.asList("kys", "fys", "fuck")),
 
+    FORCE_ENABLE_BORDERS("Settings.force-enable-border", true, "Should we forcefully send border packets to the players even if they disabled border from settings?"),
+
     ISLAND_RANGE("Settings.island-range", 400, "How big of a space should an island have?")
 
     ;
