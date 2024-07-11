@@ -21,7 +21,7 @@ public class SSPlayer implements SPlayer {
     private String name;
     private int islandCreation;
     private boolean chatEnabled;
-    private boolean borderEnabled;
+    private boolean borderEnabled = true;
     @Nullable private UUID islandId;
     @Nullable private Island visitingIsland;
     @Nullable private IslandRole role;
