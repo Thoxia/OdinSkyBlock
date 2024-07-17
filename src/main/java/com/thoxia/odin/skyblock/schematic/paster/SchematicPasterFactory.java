@@ -13,12 +13,10 @@ public class SchematicPasterFactory {
         if(!Bukkit.getPluginManager().isPluginEnabled(recommendedPaster))
             return getDefaultSchematicPaster();
 
-        switch (recommendedPaster) {
-            case "WorldEdit":
-                return new WorldEditPaster();
-            default:
-                return getDefaultSchematicPaster();
-        }
+        return switch (recommendedPaster) {
+            case "WorldEdit" -> new WorldEditPaster();
+            default -> getDefaultSchematicPaster();
+        };
     }
 
     private static SchematicPaster getDefaultSchematicPaster() {
