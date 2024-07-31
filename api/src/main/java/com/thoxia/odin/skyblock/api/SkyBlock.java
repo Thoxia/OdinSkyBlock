@@ -32,6 +32,7 @@ public abstract class SkyBlock extends JavaPlugin {
     }
 
     public abstract ConfigFile getPermissions();
+    public abstract ConfigFile getRoles();
 
     public abstract PlayerManager getPlayerManager();
 

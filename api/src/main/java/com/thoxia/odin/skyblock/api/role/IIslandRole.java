@@ -1,14 +1,22 @@
 package com.thoxia.odin.skyblock.api.role;
 
-import com.thoxia.odin.skyblock.api.permission.IslandPermission;
+import com.thoxia.odin.skyblock.api.SkyBlock;
+import com.thoxia.odin.skyblock.api.permission.IIslandPermission;
 
-import java.util.List;
 import java.util.Set;
 
 public interface IIslandRole {
 
-    int getId();
-    String getName();
-    int getWeight();
-    List<IslandPermission> getDefaultPermissions();
+    int id();
+    String name();
+    int weight();
+    Set<IIslandPermission> defaultPermissions();
+
+    default IIslandRole getPreviousRole() {
+        return SkyBlock.getInstance().getIslandRoleManager().getIslandRole(id() - 1);
+    }
+
+    default IIslandRole getNextRole() {
+        return SkyBlock.getInstance().getIslandRoleManager().getIslandRole(id() + 1);
+    }
 }

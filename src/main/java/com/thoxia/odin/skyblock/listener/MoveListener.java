@@ -4,6 +4,7 @@ import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.island.Island;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
 import com.thoxia.odin.skyblock.api.util.ChatUtils;
+import com.thoxia.odin.skyblock.permission.IslandPermission;
 import com.thoxia.odin.skyblock.util.WorldBorderUtils;
 import lombok.RequiredArgsConstructor;
 import net.kyori.adventure.title.TitlePart;
@@ -59,7 +60,7 @@ public class MoveListener implements Listener {
             if (to.getDescription() != null)
                 player.sendTitlePart(TitlePart.SUBTITLE, to.getDescription());
 
-            if (player.isFlying() && !to.hasPermission(sPlayer, plugin.getPermissionManager().getPermission("fly"))) {
+            if (player.isFlying() && !to.hasPermission(sPlayer, IslandPermission.FLY)) {
                 player.setFlying(false);
                 player.setAllowFlight(false);
                 player.sendMessage(ChatUtils.format("<red>You do not have permission to fly in this island."));

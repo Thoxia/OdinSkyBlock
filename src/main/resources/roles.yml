@@ -1,0 +1,32 @@
+visitor:
+  id: -2
+  name: "Visitor"
+  permissions:
+    - fly
+coop:
+  id: -1
+  name: "Coop"
+  permissions:
+    - FLY
+
+Island-Roles:
+  1:
+    name: "MEMBER"
+    weight: 100
+    permissions:
+      - FLY
+  2:
+    name: "ADMIN"
+    weight: 200
+    permissions:
+      - FLY
+  3:
+    name: "Leader"
+    weight: 500
+    permissions:
+      - FLY
+  4:
+    name: "Owner"
+    weight: 1000
+    permissions:
+      - ALL

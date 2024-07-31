@@ -68,6 +68,7 @@ public final class SkyBlockPlugin extends SkyBlock {
     private final ConfigFile config = new ConfigFile(this, "config.yml", false);
     private final ConfigFile messages = new ConfigFile(this, "messages.yml", false);
     private final ConfigFile permissions = new ConfigFile(this, "permissions.yml", true);
+    private final ConfigFile roles = new ConfigFile(this, "roles.yml", true);
     private final ConfigFile schematicsFile = new ConfigFile(this, "schematics.yml", true);
     private final ConfigFile upgradesFile = new ConfigFile(this, "upgrades.yml", true);
     private final Cache<UUID, Byte> teleportMap = CacheBuilder.newBuilder().expireAfterWrite(10, TimeUnit.SECONDS).build();
@@ -85,7 +86,7 @@ public final class SkyBlockPlugin extends SkyBlock {
     @Setter private ModuleManager moduleManager = new ModuleManager(this);
     @Setter private PlayerManager playerManager = new PlayerManager();
     @Setter private IUpgradeManager upgradeManager = new UpgradeManager(this);
-    @Setter private IPermissionManager permissionManager = new PermissionManager(this);
+    @Setter private IPermissionManager permissionManager = new PermissionManager();
     @Setter private ISchematicManager schematicManager = new SchematicManager(this);
     @Setter private IChatManager chatManager = new ChatManager(this);
 
@@ -131,7 +132,6 @@ public final class SkyBlockPlugin extends SkyBlock {
 
         upgradeManager.onEnable();
         schematicManager.onEnable();
-        permissionManager.onEnable();
         islandRoleManager.onEnable();
 
         this.getModuleManager().enableModules();

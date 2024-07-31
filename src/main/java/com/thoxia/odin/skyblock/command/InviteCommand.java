@@ -2,9 +2,10 @@ package com.thoxia.odin.skyblock.command;
 
 import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.island.Island;
-import com.thoxia.odin.skyblock.api.permission.IslandPermission;
+import com.thoxia.odin.skyblock.api.permission.IIslandPermission;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
 import com.thoxia.odin.skyblock.api.util.ChatUtils;
+import com.thoxia.odin.skyblock.permission.IslandPermission;
 import dev.triumphteam.cmd.core.BaseCommand;
 import dev.triumphteam.cmd.core.annotation.Command;
 import dev.triumphteam.cmd.core.annotation.SubCommand;
@@ -42,7 +43,7 @@ public class InviteCommand extends BaseCommand {
         }
 
         assert sPlayer.getRole() != null;
-        IslandPermission permission = plugin.getPermissionManager().getPermission("invite");
+        IIslandPermission permission = IslandPermission.INVITE;
         if (island.hasPermission(sPlayer, permission)) {
             player.sendMessage(ChatUtils.format("<red>You have to be an admin or owner of the island to invite someone."));
             return;

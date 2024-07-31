@@ -3,7 +3,7 @@ package com.thoxia.odin.skyblock.island;
 import com.thoxia.odin.skyblock.SkyBlockPlugin;
 import com.thoxia.odin.skyblock.api.event.*;
 import com.thoxia.odin.skyblock.api.island.bank.IslandBank;
-import com.thoxia.odin.skyblock.api.permission.IslandPermission;
+import com.thoxia.odin.skyblock.api.permission.IIslandPermission;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
 import com.thoxia.odin.skyblock.api.role.IIslandRole;
 import com.thoxia.odin.skyblock.api.schematic.ISchematic;
@@ -29,7 +29,7 @@ public class Island implements com.thoxia.odin.skyblock.api.island.Island {
     @Getter private final UUID uniqueId;
     @Getter private final long creationTime;
     @Getter private final ISchematic schematic;
-    @Getter private final Map<IslandPermission, IIslandRole> permissionMap = new HashMap<>();
+    @Getter private final Map<IIslandPermission, IIslandRole> permissionMap = new HashMap<>();
     @Getter private final Set<SPlayer> islandMembers = new HashSet<>();
     @Getter private final Set<SPlayer> bannedMembers = new HashSet<>();
     @Getter private final Set<SPlayer> coopPlayers = new HashSet<>();
@@ -198,20 +198,20 @@ public class Island implements com.thoxia.odin.skyblock.api.island.Island {
         this.ratings.put(player, rating);
     }
 
-    public boolean hasPermission(SPlayer player, IslandPermission permission) {
+    public boolean hasPermission(SPlayer player, IIslandPermission IIslandPermission) {
         if (player == null) return false;
 
         IIslandRole role = this.uniqueId.equals(player.getIslandId()) ? player.getRole() :
                 this.coopPlayers.contains(player) ? IslandRole.coopRole() : IslandRole.visitorRole();
-        IIslandRole minRole = this.permissionMap.getOrDefault(permission, permission.getDefaultRole());
+        IIslandRole minRole = this.permissionMap.getOrDefault(IIslandPermission, IIslandPermission.getDefaultRole());
 
-        return role.getWeight() >= minRole.getWeight();
+        return role.weight() >= minRole.weight();
     }
 
-    public boolean hasPermission(Player player, IslandPermission permission) {
+    public boolean hasPermission(Player player, IIslandPermission IIslandPermission) {
         SPlayer sPlayer = SkyBlockPlugin.getInstance().getPlayerManager().getPlayer(player);
         if (sPlayer == null) return false;
 
-        return hasPermission(sPlayer, permission);
+        return hasPermission(sPlayer, IIslandPermission);
     }
 }

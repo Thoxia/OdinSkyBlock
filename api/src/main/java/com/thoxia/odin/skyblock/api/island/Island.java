@@ -1,7 +1,7 @@
 package com.thoxia.odin.skyblock.api.island;
 
 import com.thoxia.odin.skyblock.api.island.bank.IslandBank;
-import com.thoxia.odin.skyblock.api.permission.IslandPermission;
+import com.thoxia.odin.skyblock.api.permission.IIslandPermission;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
 import com.thoxia.odin.skyblock.api.role.IIslandRole;
 import com.thoxia.odin.skyblock.api.schematic.ISchematic;
@@ -24,7 +24,7 @@ public interface Island {
 
     ISchematic getSchematic();
 
-    Map<IslandPermission, IIslandRole> getPermissionMap();
+    Map<IIslandPermission, IIslandRole> getPermissionMap();
 
     Set<SPlayer> getIslandMembers();
 
@@ -98,6 +98,6 @@ public interface Island {
 
     Map<UUID, Integer> getRatings();
 
-    boolean hasPermission(SPlayer player, IslandPermission permission);
+    boolean hasPermission(SPlayer player, IIslandPermission IIslandPermission);
 
 }

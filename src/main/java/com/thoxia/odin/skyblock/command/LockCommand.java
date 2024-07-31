@@ -5,6 +5,7 @@ import com.thoxia.odin.skyblock.api.island.Island;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
 import com.thoxia.odin.skyblock.api.util.ChatUtils;
 import com.thoxia.odin.skyblock.config.Messages;
+import com.thoxia.odin.skyblock.permission.IslandPermission;
 import dev.triumphteam.cmd.bukkit.annotation.Permission;
 import dev.triumphteam.cmd.core.BaseCommand;
 import dev.triumphteam.cmd.core.annotation.Command;
@@ -38,7 +39,7 @@ public class LockCommand extends BaseCommand {
             return;
         }
 
-        if (!island.hasPermission(sPlayer, plugin.getPermissionManager().getPermission("lock"))) {
+        if (!island.hasPermission(sPlayer, IslandPermission.LOCK)) {
             Messages.ACTION_CANCELLED.sendMessage(player);
             return;
         }

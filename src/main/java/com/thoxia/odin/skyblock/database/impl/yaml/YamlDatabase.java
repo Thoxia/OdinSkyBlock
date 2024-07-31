@@ -8,7 +8,7 @@ import com.thoxia.odin.skyblock.api.island.Island;
 import com.thoxia.odin.skyblock.api.island.bank.log.BankAction;
 import com.thoxia.odin.skyblock.api.island.bank.log.BankLog;
 import com.thoxia.odin.skyblock.api.location.SLocation;
-import com.thoxia.odin.skyblock.api.permission.IslandPermission;
+import com.thoxia.odin.skyblock.api.permission.IIslandPermission;
 import com.thoxia.odin.skyblock.api.player.SPlayer;
 import com.thoxia.odin.skyblock.api.role.IIslandRole;
 import com.thoxia.odin.skyblock.api.schematic.ISchematic;
@@ -162,8 +162,8 @@ public class YamlDatabase implements Database {
         if (data.isSet("Permissions")) {
             for (String s : data.getConfigurationSection("Permissions").getKeys(false)) {
                 IIslandRole role = plugin.getIslandRoleManager().getIslandRole(data.getInt("Permissions." + s));
-                IslandPermission permission = plugin.getPermissionManager().getPermission(s);
-                island.getPermissionMap().put(permission, role);
+                IIslandPermission IIslandPermission = plugin.getPermissionManager().getPermission(s);
+                island.getPermissionMap().put(IIslandPermission, role);
             }
         }
 
@@ -292,11 +292,11 @@ public class YamlDatabase implements Database {
 
         // members
         for (SPlayer member : island.getIslandMembers()) {
-            data.set("Members." + member.getUniqueId(), member.getRole().getId());
+            data.set("Members." + member.getUniqueId(), member.getRole().id());
         }
 
         for (SPlayer member : island.getCoopPlayers()) {
-            data.set("Members." + member.getUniqueId(), IslandRole.coopRole().getId());
+            data.set("Members." + member.getUniqueId(), IslandRole.coopRole().id());
         }
 
         // island bank
@@ -315,8 +315,8 @@ public class YamlDatabase implements Database {
         }
 
         // permissions
-        for (Map.Entry<IslandPermission, IIslandRole> entry : island.getPermissionMap().entrySet()) {
-            data.set("Permissions." + entry.getKey().getName(), entry.getValue().getId());
+        for (Map.Entry<IIslandPermission, IIslandRole> entry : island.getPermissionMap().entrySet()) {
+            data.set("Permissions." + entry.getKey().getName(), entry.getValue().id());
         }
 
         // ratings
@@ -342,7 +342,7 @@ public class YamlDatabase implements Database {
             data.set("island", null);
 
         if (player.getRole() != null)
-            data.set("role", player.getRole().getId());
+            data.set("role", player.getRole().id());
         else
             data.set("role", null);
 
